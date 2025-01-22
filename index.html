@@ -1,0 +1,1159 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio - Showcasing projects, experience, and contact information">
+    <title>My Portfolio - Celia Kamana</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+/* General styling and custom styles */
+        body, h1, h2, h3, p, a, ul, li, input, textarea, button {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+           
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+        /*special styles*/
+        .highlight {
+              font-weight: bold; 
+              color: #00274d;   
+              padding: 0.2rem; 
+        }
+        .dark-mode .highlight{
+            color:#FFB6C1
+        }
+        .bold{
+            font-size: 1.5rem;
+            font-weight: bold;
+
+        }
+        .experience{
+            font-size: 0.8rem;
+        }
+
+        /*dark mode general features*/
+        body.dark-mode h1, 
+        body.dark-mode h2, 
+        body.dark-mode h3, 
+        body.dark-mode p{
+            color: #fff;
+        }
+        .dark-mode .home {
+            background: #001a33;
+        }
+
+        .dark-mode .about {
+            background: #242441
+        }
+
+        .dark-mode .projects {
+            background: #2c2c3c;
+        }
+        .dark-mode .project-card {
+            background: #666675;
+        }
+
+        .dark-mode .contact {
+            background: #001a33;
+        }
+        .dark-mode .Credentials{
+            background: #1e2c3d;
+        }
+        .dark-mode .Credentials-card {
+            background: #666675;
+        }
+
+/* Navbar */
+        .navbar {
+            background: #00274d;
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background 0.3s ease;
+        }
+        
+        .navbar .logo {
+            position: absolute; 
+            top: 4.5px;
+            left: 25px;
+            display: flex; 
+            align-items: center; 
+        }
+
+        .navbar .logo img {
+            width:50px;
+            height: 50px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 2px solid #fff; 
+            transition: transform 0.3s ease; 
+        }
+
+        .navbar .logo img:hover {
+            transform: scale(1.1); 
+        }
+
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 3rem;
+            margin-left: auto;
+            margin-right: 4rem;
+        }
+
+        .navbar .nav-links li {
+            font-size: 1.5rem;
+        }
+
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+       .dark-mode-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-right: 5rem;
+        }
+        .navbar .nav-links a:hover,
+        .navbar .dark-mode-toggle :hover {
+            color: #3692ac;
+        }
+        /*Scrolled nav bar*/
+        .navbar.scrolled {
+            background: #eaecec
+        }
+
+        .navbar.scrolled .nav-links a,
+        .navbar.scrolled .dark-mode-toggle {
+            color: #00274d;
+        }
+       .navbar.scrolled .nav-links a:hover,
+       .navbar.scrolled .dark-mode-toggle :hover {
+            color: #4e6c8a;
+        }
+
+        /*navbar dark mode and scrolled*/
+        .dark-mode .navbar {
+            background: #001a33;
+        }
+        .dark-mode .navbar .nav-links a:hover,
+        .dark-mode .navbar .dark-mode-toggle:hover {
+            color: #3692ac;
+        }
+             
+        .dark-mode .navbar.scrolled {
+            background: #1a1a2e;
+        }
+        .dark-mode .navbar .nav-links a,
+        .dark-mode .dark-mode-toggle,
+        .dark-mode .navbar.scrolled .nav-links a,
+        .dark-mode .navbar.scrolled .dark-mode-toggle{
+            color: #fff;
+        }
+        .dark-mode .navbar.scrolled .nav-links a:hover,
+        .dark-mode .navbar.scrolled .dark-mode-toggle :hover {
+            color: #595663;
+        }
+
+    /* Burger Menu Icon and smaleer screens*/
+
+    .burger-menu {
+    display: none; /* Hidden by default */
+    cursor: pointer;
+    font-size: 2rem;
+    color: #fff;
+    margin-right: 17rem;
+    }
+
+   .burger-menu div {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: 0.4s;
+    }
+     /* Burger Menu Animation */
+     .change .bar1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .change .bar2 {
+    opacity: 0;
+    }
+
+    .change .bar3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+   /* Responsive nav */
+   @media (max-width: 1024px) {
+    .navbar .nav-links li {
+        font-size:0.9rem;
+    }
+    }
+
+    @media (max-width: 768px) {
+    .burger-menu {
+        display: block; /* Show burger menu on mobile screens */
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        background-color:#00274d;
+        flex-direction: column;
+        padding: 1rem 0;
+        opacity: 0; /* Ensure hidden by default */
+        transform: translateY(-20px); /* Slide out of view */
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        pointer-events: none; /* Prevent interaction when hidden */
+    }
+    .nav-links.active {
+        opacity: 1; /* Show nav links */
+        transform: translateY(0); /* Slide into view */
+        pointer-events: auto; /* Allow interaction */
+    }
+
+    .nav-links li {
+        text-align: center;
+        margin: 0 auto;
+        font-size: 1.5rem;
+    }
+
+    /*when scrolled+ chnaging burger menu color*/
+    .nav-links.scrolled {
+            background: #eaecec;
+        }
+   
+    .burger-menu.scrolled div {
+    background: #00274d; /* Change burger menu line color to blue when scrolled */
+    }
+
+    /*when in dark mode + scrolled*/
+    .dark-mode .nav-links {
+        background: #001a33;
+
+    }
+   .dark-mode .nav-links.scrolled {
+            background: #1a1a2e;
+    }
+    .dark-mode .burger-menu.scrolled div{
+        background:#fff;
+    }
+    
+}
+
+/* Home Section */
+/* General Home Section Styling */
+.home {
+    position: relative; /* Allows image stacking and alignment */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 2rem;
+    background: #00274d; /* Background color */
+    color: #fff;
+    height: 100vh;
+    overflow: hidden; /* Prevent content overflow */
+    margin-top: 60px; /* To prevent overlap with the fixed navbar */
+}
+
+.home .intro {
+    max-width: 50%; /* Constrain text width */
+    z-index: 2; /* Keep text above the image */
+}
+
+.home .intro p {
+    font-size: 1.2rem;
+    font-weight: lighter;
+    margin-bottom: 1rem;
+}
+
+.home .intro h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.home .image {
+    position: absolute; /* Place the image within the section */
+    right: -50px;
+    height: 100%; 
+    width: 50%; 
+    overflow: hidden; 
+    z-index: 1; 
+}
+
+.home .image img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; /* Scale the image to cover the container */
+    border-bottom-left-radius:5px;
+ }
+
+/* Desktop-specific styling (default) */
+@media (min-width: 1025px) {
+    .home {
+        flex-direction: row; 
+    }
+
+    .home .intro {
+        text-align: left; 
+    }
+
+    .home .image {
+        width: 50%; 
+    }
+
+    .home .image img {
+        object-fit: cover; 
+    }
+}
+
+/* Tablet-specific styling */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .home {
+        flex-direction: row; /* Keep text and image side by side */
+        align-items: center; /* Center-align text and image vertically */
+    }
+
+    .home .intro {
+        max-width: 60%; /* Adjust text width */
+    }
+
+    .home .intro h1 {
+        font-size: 3rem; /* Slightly smaller text for tablets */
+    }
+
+    .home .intro p {
+        font-size: 1.2rem;
+    }
+
+    .home .image {
+        width: 50%; /* Restrict image to half the section width */
+    }
+
+    .home .image img {
+        object-fit: cover; /* Ensure the image fills the blue background */
+    }
+}
+
+/* Mobile-specific styling */
+@media (max-width: 767px) {
+    .home {
+        flex-direction: column; /* Stack content vertically */
+        text-align: center;
+    }
+
+    .home .intro {
+        max-width: 100%; /* Full width for text */
+        height: center;
+        margin-top: 10rem;
+        margin-bottom: 2rem; /* Space below the text */
+    }
+
+    .home .intro h1 {
+        font-size: 2.5rem; /* Smaller text for mobile */
+    }
+
+    .home .intro p {
+        font-size: 1rem;
+    }
+
+    .home .image {
+        position: relative; /* Remove absolute positioning for mobile */
+        width:center;
+        height: center;
+        text-align: center; /* Center the image */
+    }
+
+    .home .image img {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%; /* Circular image */
+        border: 3px solid #fff; /* Reduce border thickness */
+        object-fit: cover; /* Ensure the image fits properly */
+    }
+}
+
+/* About Section */
+.about {
+            padding: 4rem;
+            background: #fff;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .about.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about h1{
+            text-align: center;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+            color: #00274d;
+            font-size: 1.5rem;
+           
+        }
+
+        .about .content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left; /* Align text to the left */
+            color: #141414;
+            font-size: 1rem; /* Make the text smaller */
+            line-height: 1.8; /* Improve readability with line spacing */
+        }
+
+/* Projects Section */
+    .projects {
+        padding:4rem 2rem;
+        background: #add1f1;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+    .projects.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    .projects h1{
+        text-align: center;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        color: #00274d;
+        font-size: 1.5rem;
+        }
+
+
+    /* Grid Layout */
+    .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+    }
+
+    /* Project Card */
+    .project-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Carousel Styling */
+    .carousel {
+    position: relative;
+    overflow: hidden;
+    margin: 1rem 0;
+    border-radius: 10px;
+    }
+
+    .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    }
+
+    .carousel-item {
+    min-width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    border-radius: 10px;
+    }
+
+    .carousel button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    }
+
+    .carousel .prev-btn {
+    left: 10px;
+    }
+
+    .carousel .next-btn {
+    right: 10px;
+    }
+
+    /* Learn More Button */
+    .project-card .btn {
+    display: inline-block;
+    background: #003468;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    }
+
+    .project-card .btn:hover {
+    background: #217edb;
+    }
+ 
+/* Credentials Section */
+        .Credentials {
+            padding: 4rem 2rem;
+            background: #eef5fa;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .Credentials.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .Credentials h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+            color: #00274d;
+            font-size: 1.5rem;
+        }
+
+        .Credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            Padding:2rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .Credentials-card {
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            background: #fff;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .Credentials-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .Credentials-card img {
+            width: 100%;
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        .Credentials-card a {
+            text-decoration: none;
+            color:#003468;
+            font-weight: bold;
+            margin-top: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        .Credentials-card a:hover {
+            color: #217edb;
+        }
+    
+
+/* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+            background: #00274d;
+            color: #fff;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .contact.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .contact h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            padding: 1rem 1rem;
+            margin-top: 2rem;
+        }
+        .contact p{
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+           
+        }
+
+        .contact form {
+            max-width: 500px;
+            margin: 0 auto;
+            margin-bottom:3rem;
+        }
+
+        .contact input, .contact textarea {
+            width: 100%;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .contact button {
+            background: #00509e;
+            color: #fff;                    
+            padding: 0.8rem 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+       
+
+     .social-links {
+        display: flex;
+        justify-content: center;
+        gap:2rem;
+        margin-top: 1.5rem;
+        
+    }
+ 
+    .social-links a {
+        color: #ffffff; 
+        transition: color 0.3s;
+        display: flex;
+        align-items: center;
+        gap:0.5;
+        font-size:1.2rem;
+        text-decoration: none;
+    }
+    .social-links a:hover {
+        color: #217edb; 
+    }
+    .social-links i {
+        font-size: 1.5rem;
+    }
+   /*Responsive socials*/
+   @media (max-width: 767px) {
+    .social-links {
+        flex-direction: column; 
+        align-items: center;  
+        gap: 1rem;            
+    }
+
+    .social-links a {
+        justify-content: center; 
+        font-size: 1.1rem;       
+    }
+}
+
+/* Footer */
+        footer {
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="img/LogoCK.png" alt="CK">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Experience/Projects</a></li>
+                <li><a href="#Credentials">Credentials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="burger-menu">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+            <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="home">
+        <div class="intro">
+            <p>Hi! My name is</p>
+            <h1>Celia Kamana,</h1>
+            <p class="subtitle">I am an <span class="bold">IT Specialist</span>: I design, develop, manage developement, and provide support for Information Technology
+            solutions and computer systems.</p>
+        </div>
+        <div class="image">
+            <img src="img/imgPrfl.png" alt="Profile Image">
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h1>About Me<h1>
+                <div class="content">
+                    <p>
+                        I am a dynamic <span class="highlight">IT Specialist</span> with a proven track record in <span class="highlight">IT Consultancy</span>, <span class="highlight">Project Management</span>, <span class="highlight">UX/UI Design</span>, 
+                        <span class="highlight">Software & Web Development (Full-Stack)</span>, <span class="highlight">Data Management</span>, <span class="highlight">Cloud Technologies</span>, and <span class="highlight">Cybersecurity concepts</span>. <br>
+                        My expertise spans across: .NET Frameworks and Development (i.e. C#, XAML, etc), HTML, CSS,
+                        JavaScript, SQL, Microsoft Azure, and various Management, Design, Development and Communication tools(Ms project, JIRA, Ms Visio, Visual Studio, Git, SSMS, Hyper-V, Slack etc) enabling me to manage, design and implement innovative, scalable, 
+                        and secure solutions tailored to meet diverse needs.
+                    </p> <br>
+                    <p>
+                        I am passionate about staying at the forefront of technological advancements, learning about the numerous emerging 
+                        security best practices, which ensures that every system I design or work on, prioritizes 
+                        data integrity, application security, and compliance.<br>
+                        I also enjoy optimizing workflows, enhancing productivity, and delivering high-performance applications that are both 
+                        efficient and future-proof through leveraging my knowledge in DevOps and 
+                        cloud-based solutions.
+                    </p> <br>
+                    <p>
+                        In addition to my technical skills, I have hands-on experience in managing cross-functional teams, streamlining projects 
+                        from conception to deployment, and ensuring timely delivery. I advocate for management styles that prioritize fostering collaboration and 
+                        teamwork, as I believe that collaboration, creativity, and adaptability are key to achieving success in the ever-evolving tech landscape.
+                    </p> <br>
+                    <p>
+                        Outside of technology, I am deeply passionate about personal growth, creativity, and making meaningful connections. 
+                        I find inspiration in travel, as it allows me to explore new cultures and broaden my perspective. 
+                        Creative writing and storytelling fuel my imagination, giving me a unique approach to problem-solving in tech.<br>
+                        In my downtime, I enjoy fitness, reading about history and innovation, indulging in various genres music, and in 
+                        photography, capturing moments that tell a story.
+                    </p> <br>
+                    <p>
+                        Whether building systems that shape the future of technology or embracing life's adventures outside of work, I am committed to 
+                        creating a positive and lasting impact. My mission is to combine technical innovation, a human-centered approach, 
+                        and security-focused practices to help build a sustainable and secure digital future for all.
+                    </p>
+                </div>
+                
+        </div>
+    </section>
+
+    <!-- Experience/Projects Section -->
+    <section id="projects" class="projects">
+    <div class="container">
+          <h1>Experience & Projects</h1>
+        <div class="project-grid">
+            
+            <!-- FinApp -->
+            <div class="project-card">
+              <h3>FinApp <span class="experience">~Programming and Project Management</span></h3>
+              
+              <div class="carousel">
+                <button class="prev-btn">&lt;</button>
+                <div class="carousel-track">
+                  <img src="img/FinAPP Media/AppImg (1).png" alt="image" class="carousel-item">
+                  <img src="img/FinAPP Media/AppImg (2).png" alt="image" class="carousel-item">
+                  <img src="img/FinAPP Media/AppImg (3).png" alt="image" class="carousel-item">
+                  <img src="img/FinAPP Media/AppImg (4).png" alt="image" class="carousel-item">
+                  <img src="img/FinAPP Media/AppImg (5).png" alt="image" class="carousel-item">
+                  <img src="img/FinAPP Media/AppImg (6).png" alt="image" class="carousel-item">
+                  <video class="carousel-item" controls>
+                    <source src="img/FinAPP Media/PrototypeDemo (v1).mp4" type="video/mp4">
+                    Oops! Your browser does not support videos.
+                 </video>
+                 <img src="img/FinAPP Media/AppImg(7).png" alt="image" class="carousel-item">
+                  <img src="img/FinAPP Media/PMimg.png" alt="image" class="carousel-item">
+                 <video class="carousel-item" controls>
+                    <source src="img/FinAPP Media/PMvid.mp4" type="video/mp4">
+                    Oops! Your browser does not support videos.
+                  </video>
+                </div>
+                <button class="next-btn">&gt;</button>
+              </div>
+              <p>FinApp is a prototype financial application that I programmed and managed its development. 
+                The app allows users to perform essential financial operations such as money transfers, QR code transactions (both online and offline), 
+                and USSD-based services for users without reliable internet access.
+              </p>
+              <a href="https://github.com/Celiakamana/FinAppDemo" target="_blank" class="btn">Learn More</a>
+            </div>
+      
+            <!-- SOPs -->
+            <div class="project-card">
+              <h3> SOPs for the Development of software <span class="experience">~Project Management and Technical writing</span> </h3>
+              <div class="carousel">
+                <button class="prev-btn">&lt;</button>
+                <div class="carousel-track">
+                  <img src="img/SOP Media/SOPimg(1).png" alt="image" class="carousel-item">
+                  <img src="img/SOP Media/SOPimg(2).png" alt="image" class="carousel-item">
+                  <img src="img/SOP Media/SOPimg(3).png" alt="image" class="carousel-item">
+                  <video class="carousel-item" controls>
+                    <source src="img/SOP Media/SOPvid(1).mp4" type="video/mp4">
+                    Oops! Your browser does not support videos.
+                  </video>
+                  <video class="carousel-item" controls>
+                    <source src="img/SOP Media/SOPvid(2).mp4" type="video/mp4">
+                    Oops! Your browser does not support videos.
+                  </video>
+                  <img src="img/SOP Media/SOPimg(6).png" alt="image" class="carousel-item">
+                  <img src="img/SOP Media/SOPimg(7).png" alt="image" class="carousel-item">
+                  <img src="img/SOP Media/SOPimg(4).png" alt="image" class="carousel-item">
+                  <img src="img/SOP Media/SOPimg(5).png" alt="image" class="carousel-item">
+                  <video class="carousel-item" controls>
+                    <source src="img/SOP Media/SOPvid(3).mp4" type="video/mp4">
+                    Oops! Your browser does not support videos.
+                  </video>
+                  
+                </div>
+                <button class="next-btn">&gt;</button>
+              </div>
+              <p>The project involved creating Standard Operating Procedures (SOPs), guidelines,checklists, templates and training materials  
+                and related documentation designed to facilitate efficient and consistent project management and software development processes</p>
+              <a href="https://github.com/Celiakamana/Capstone-SOP-creation" target="_blank" class="btn">Learn More</a>
+            </div>
+</div>
+<div class="project-grid">
+             <!-- KWC -->
+             <div class="project-card">
+                <h3>KWC Consultancy <span class="experience">~IT Consultancy and UX/UI Design</span></h3>
+                <div class="carousel">
+                  <button class="prev-btn">&lt;</button>
+                  <div class="carousel-track">
+                    <video class="carousel-item" controls>
+                        <source src="img/KWC Media/KWCvid (1).mp4" type="video/mp4">
+                        Oops! Your browser does not support videos.
+                      </video>
+                    <img src="img/KWC Media/KWCimg(1).png" alt="image" class="carousel-item">
+                    <video class="carousel-item" controls>
+                        <source src="img/KWC Media/KWCvid(2).mp4" type="video/mp4">
+                        Oops! Your browser does not support videos.
+                      </video>
+                    <img src="img/KWC Media/KWCimg(2).png" alt="image" class="carousel-item">
+                    <img src="img/KWC Media/KWCimg(3).png" alt="image" class="carousel-item">
+                    
+                  </div>
+                  <button class="next-btn">&gt;</button>
+                </div>
+                <p>During my consultancy internship in Kigali, Rwanda, I focused on expanding the online presence of a local food eatery. 
+                I provided recommendations to stakeholders, designed wireframes, and contributed to the initial development of a Blazor WebAssembly-based web application.</p>
+                <a href="https://github.com/Celiakamana/Kwc-ConsultancyProject" target="_blank" class="btn">Learn More</a>
+              </div>
+
+               <!-- Sort Wizard project -->
+            <div class="project-card">
+                <h3>Sorting Wizard <span class="experience">~Programming and Software Development</span></h3>
+                <div class="carousel">
+                  <button class="prev-btn">&lt;</button>
+                  <div class="carousel-track">
+                    <img src="img/SortWizard Media/SWimg(1).png" alt="image" class="carousel-item">
+                    <img src="img/SortWizard Media/SWimg(2).png" alt="image" class="carousel-item">
+                    <video class="carousel-item" controls>
+                      <source src="img/SortWizard Media/SWvid.mp4" type="video/mp4">
+                      Oops! Your browser does not support videos.
+                    </video>
+                  </div>
+                  <button class="next-btn">&gt;</button>
+                </div>
+                <p>This is a Windows Forms application that I developed for personal use; I use it for sorting datasets (Names, Numbers or both).
+                </p>
+                <a href="https://github.com/Celiakamana/SortWizard-WinForm-" target="_blank" class="btn">Learn More</a>
+            </div>
+
+               <!-- Personal website Dev 
+            <div class="project-card">
+                <h3>Portfolio Website Development</h3>
+                <div class="carousel">
+                  <button class="prev-btn">&lt;</button>
+                  <div class="carousel-track">
+                    <img src="example3.jpg" alt="Project Image 3" class="carousel-item">
+                    <img src="example4.jpg" alt="Project Image 4" class="carousel-item">
+                    <video class="carousel-item" controls>
+                      <source src="example-video2.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <button class="next-btn">&gt;</button>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <a href="https://github.com/your-repo" target="_blank" class="btn">Learn More</a>
+            </div> -->
+
+          </div>
+        </div>
+      </section>
+      
+
+    <!-- Credentials Section -->
+    <section id="Credentials" class="Credentials">
+        <div class="container">
+            <h1>My Certifications and Credentials</h1>
+            <div class="Credentials-grid">
+                <div class="Credentials-card">
+                    <img src="img/Credentials and Certifcates/Diploma.png" alt="Diploma">
+                    <a href="https://drive.google.com/file/d/1mxaI0l5S6bFcch0nyIIRrqL68mAP29pa/view?usp=drive_link" target="_blank" >View Diploma</a>
+                </div>
+                <div class="Credentials-card">
+                    <img src="img/Credentials and Certifcates/IT-fundamentals.png" alt="Credential">
+                    <a href="https://www.credly.com/badges/29c06af6-6ab6-4298-a009-43a221e68ee8/public_url" target="_blank"> View Credential</a>
+                </div>
+            </div>
+            <div class="Credentials-grid">
+                <div class="Credentials-card">
+                    <img src="img/Credentials and Certifcates/chancellorsList.png" alt="Credential">
+                    <a href="https://www.credly.com/badges/bf3fabf6-099b-4c4b-bbb1-2ff357d0dfd4/public_url" target="_blank"> View Credential</a>
+                </div>
+                <div class="Credentials-card">
+                    <img src="img/Credentials and Certifcates/DeansList.png" alt="Credential">
+                    <a href="https://www.credly.com/badges/74665303-766f-4a81-9ac3-68e75e16fb02/public_url" target="_blank"> View Credential</a>
+                </div>
+                <div class="Credentials-card">
+                    <img src="img/Credentials and Certifcates/college-algebra-2019.png" alt="Credential">
+                    <a href="https://www.credly.com/badges/627bb94c-121d-47a1-bbc6-1c5e0aa3b139/public_url" target="_blank"> View Credential</a>
+                </div>
+            </div>
+            
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h1>Contact Me</h1>
+            <p>Send me a quick message to my Email! </p>
+            <form id="contactForm" action="https://formspree.io/f/mjkknbgo" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+            <p id="formStatus" style="display:none;"></p>
+
+            <!--Social Media-->
+            <p>Connect with me :) </p>
+            <div class="social-links">
+
+                <a href="https://github.com/Celiakamana" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                    <ssname>GitHub</ssname> 
+                </a>
+                <a href="www.linkedin.com/in/celia-kamana-6055aa348"  target="_blank" aria-label="LinkedIn"></a>
+                    <i class="fab fa-linkedin"></i>
+                    <ssname>LinkedIn</ssname>
+                </a>
+                <a href="https://discord.com/users/1223266188323459122" target="_blank" aria-label="Discord">
+                    <i class="fab fa-discord"></i>
+                    <ssname>Discord</ssname>
+                </a>
+                <a href="https://www.credly.com/users/Celiakamana" target="_blank" aria-label="Credly">
+                    <i class="fas fa-certificate"></i>
+                    <ssname>Credly</ssname>
+                </a>
+                <a href="https://www.instagram.com/<your-username>" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                    <ssname>Instagram</ssname>
+                </a>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Celia Kamana. All rights reserved.</p>
+        </div>
+    </footer>
+
+<!--JavaScripts-->
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+
+            const darkModeToggle = document.querySelector('.dark-mode-toggle i');
+            if (document.body.classList.contains('dark-mode')) {
+                darkModeToggle.classList.remove('fa-moon');
+                darkModeToggle.classList.add('fa-sun');
+            } else {
+                darkModeToggle.classList.remove('fa-sun');
+                darkModeToggle.classList.add('fa-moon');
+            }
+        }
+
+        // Smooth scrolling and fade-in animations
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('section');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            sections.forEach((section) => {
+                observer.observe(section);
+            });
+
+            // Navbar background change on scroll
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                    navLinks.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                    navLinks.classList.remove('scrolled');
+                }
+            });
+        });
+        //Burger menu toggle
+        document.addEventListener('DOMContentLoaded', function () {
+    const burgerMenu = document.querySelector('.burger-menu');
+    const navLinks = document.querySelector('.nav-links');
+    const navbar = document.querySelector('.navbar');
+
+    // Toggle the navigation links visibility
+    burgerMenu.addEventListener('click', function (event) {
+        event.stopPropagation(); // Prevent event bubbling
+        navLinks.classList.toggle('active'); // Toggle nav visibility
+        burgerMenu.classList.toggle('change'); // Toggle burger animation
+    });
+
+    // Close the menu when a link is clicked
+    navLinks.addEventListener('click', function (event) {
+        if (event.target.tagName === 'A') {
+            navLinks.classList.remove('active'); // Hide nav links
+            burgerMenu.classList.remove('change'); // Reset burger animation
+        }
+    });
+
+    // Close the menu when clicking outside
+    document.addEventListener('click', function (event) {
+        if (!navLinks.contains(event.target) && !burgerMenu.contains(event.target)) {
+            navLinks.classList.remove('active'); // Hide nav links
+            burgerMenu.classList.remove('change'); // Reset burger animation
+        }
+    });
+
+    // Close the menu on scroll
+    window.addEventListener('scroll', function () {
+        navLinks.classList.remove('active'); // Hide nav links
+        burgerMenu.classList.remove('change'); // Reset burger animation
+    });
+
+    // Add/remove 'scrolled' class based on scroll position
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled'); // Change navbar background
+            navLinks.classList.add('scrolled'); // Match nav-links background
+            burgerMenu.classList.add('scrolled');//burger menu match navbar color
+             // Change burger menu div line colors
+    burgerMenuDivs.forEach(div => {
+        div.classList.add('scrolled');
+    });
+        } else {
+            navbar.classList.remove('scrolled');
+            navLinks.classList.remove('scrolled');
+            burgerMenu.classList.remove('scrolled');
+             // Reset burger menu div line colors
+    burgerMenuDivs.forEach(div => {
+        div.classList.remove('scrolled');
+    });
+        }
+    });
+});
+
+//project cards carousel
+document.querySelectorAll('.carousel').forEach(carousel => {
+  const track = carousel.querySelector('.carousel-track');
+  const items = carousel.querySelectorAll('.carousel-item');
+  const prevBtn = carousel.querySelector('.prev-btn');
+  const nextBtn = carousel.querySelector('.next-btn');
+  let currentIndex = 0;
+
+  const updateCarousel = () => {
+    const itemWidth = items[0].clientWidth;
+    track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+  };
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex === 0) ? items.length - 1 : currentIndex - 1;
+    updateCarousel();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex === items.length - 1) ? 0 : currentIndex + 1;
+    updateCarousel();
+  });
+
+  // Resize listener for responsive adjustments
+  window.addEventListener('resize', updateCarousel);
+});
+
+//Email status response
+document.querySelector("#contactForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const form = e.target;
+        const status = document.querySelector("#formStatus");
+        fetch(form.action, {
+            method: form.method,
+            body: new FormData(form),
+            headers: { Accept: "application/json" },
+        })
+            .then(() => {
+                status.textContent = "Thanks for sending me an Email/message! I'll get back to you soon." ;
+                status.style.color = "green";
+                status.style.display = "block";
+                form.reset();
+            })
+            .catch(() => {
+                status.textContent = "Oops! There was a problem. Please try again.";
+                status.style.color = "red";
+                status.style.display = "block";
+            });
+    });
+
+ </script>
+</body>
+</html>
