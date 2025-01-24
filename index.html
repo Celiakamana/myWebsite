@@ -206,12 +206,17 @@
    @media (max-width: 1024px) {
     .navbar .nav-links li {
         font-size:0.9rem;
-    }
+     }
     }
 
     @media (max-width: 768px) {
     .burger-menu {
         display: block; /* Show burger menu on mobile screens */
+        position: absolute; 
+        top: 50%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        
     }
 
     .nav-links {
@@ -513,7 +518,36 @@
     .carousel .next-btn {
     right: 10px;
     }
+    .video-placeholder {
+    position: relative;
+    cursor: pointer;
+    
+   }
 
+    .video-placeholder img {
+        width: 100%;
+        height:100%;
+        object-fit: contain;
+        border-radius: 10px;
+       
+    }
+
+    .play-icon {
+        position:absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.5rem;
+        color: white;
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 50%;
+        width: 3.5rem; 
+        height: 3.5rem; 
+        display: flex; 
+        align-items: center;
+        justify-content: center; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
     /* Learn More Button */
     .project-card .btn {
     display: inline-block;
@@ -783,7 +817,7 @@
             
             <!-- FinApp -->
             <div class="project-card">
-              <h3>FinApp <span class="experience">~Programming and Project Management</span></h3>
+              <h3>FinApp <span class="experience">~Programming and Development</span></h3>
               
               <div class="carousel">
                 <button class="prev-btn">&lt;</button>
@@ -794,10 +828,15 @@
                   <img src="img/FinAPP Media/AppImg (4).png" alt="image" class="carousel-item">
                   <img src="img/FinAPP Media/AppImg (5).png" alt="image" class="carousel-item">
                   <img src="img/FinAPP Media/AppImg (6).png" alt="image" class="carousel-item">
-                  <video class="carousel-item" controls>
-                    <source src="img/FinAPP Media/PrototypeDemo (v1).mp4" type="video/mp4">
-                    Oops! Your browser does not support videos.
-                 </video>
+                 
+                  <!--Large file: Demo video-->
+                  <div class="carousel-item video-placeholder">
+                    <a href=" https://drive.google.com/file/d/14luF4ZOg6g6SetUxWctRFCdIaOfxCjjH/view?usp=drive_link" target="_blank">
+                        <img src="img/FinAPP Media/PlchldImg.png" alt="Video Placeholder">
+                        <div class="play-icon">▶</div>
+                    </a>
+                  </div>
+                  
                  <img src="img/FinAPP Media/AppImg(7).png" alt="image" class="carousel-item">
                   <img src="img/FinAPP Media/PMimg.png" alt="image" class="carousel-item">
                  <video class="carousel-item" controls>
@@ -827,18 +866,27 @@
                     <source src="img/SOP Media/SOPvid(1).mp4" type="video/mp4">
                     Oops! Your browser does not support videos.
                   </video>
-                  <video class="carousel-item" controls>
-                    <source src="img/SOP Media/SOPvid(2).mp4" type="video/mp4">
-                    Oops! Your browser does not support videos.
-                  </video>
+
+                   <!--Large file: SOP Creation planning video-->
+                   <div class="carousel-item video-placeholder">
+                    <a href="https://drive.google.com/file/d/1Yc23xhSGoiH5uBzuHf3eyVkqX06FLALa/view?usp=drive_link" target="_blank">
+                        <img src="img/SOP Media/PlchldImg(1).png" alt="Video Placeholder">
+                        <div class="play-icon">▶</div>
+                    </a>
+                  </div>
+
                   <img src="img/SOP Media/SOPimg(6).png" alt="image" class="carousel-item">
                   <img src="img/SOP Media/SOPimg(7).png" alt="image" class="carousel-item">
                   <img src="img/SOP Media/SOPimg(4).png" alt="image" class="carousel-item">
                   <img src="img/SOP Media/SOPimg(5).png" alt="image" class="carousel-item">
-                  <video class="carousel-item" controls>
-                    <source src="img/SOP Media/SOPvid(3).mp4" type="video/mp4">
-                    Oops! Your browser does not support videos.
-                  </video>
+
+                    <!--Large file: SOP Creation Doc Deliverable video-->
+                    <div class="carousel-item video-placeholder">
+                        <a href="https://drive.google.com/file/d/1thBp38ZouI7RUCfA-bzX79XF5f23uP3u/view?usp=drive_link" target="_blank">
+                            <img src="img/SOP Media/PlchldImg(2).png" alt="Video Placeholder">
+                            <div class="play-icon">▶</div>
+                        </a>
+                    </div>
                   
                 </div>
                 <button class="next-btn">&gt;</button>
@@ -851,7 +899,7 @@
 <div class="project-grid">
              <!-- KWC -->
              <div class="project-card">
-                <h3>KWC Consultancy <span class="experience">~IT Consultancy and UX/UI Design</span></h3>
+                <h3>KWC Consultancy <span class="experience">~Digital Strategy Consultancy and UX/UI Design</span></h3>
                 <div class="carousel">
                   <button class="prev-btn">&lt;</button>
                   <div class="carousel-track">
@@ -974,19 +1022,20 @@
                     <i class="fab fa-github"></i>
                     <ssname>GitHub</ssname> 
                 </a>
-                <a href="www.linkedin.com/in/celia-kamana-6055aa348"  target="_blank" aria-label="LinkedIn"></a>
+                <a href="https://linkedin.com/in/celia-kamana-6055aa348" target="_blank" aria-label="LinkedIn">
                     <i class="fab fa-linkedin"></i>
-                    <ssname>LinkedIn</ssname>
+                    <ssname>LinkedIn</ssname> 
+                </a>
                 </a>
                 <a href="https://discord.com/users/1223266188323459122" target="_blank" aria-label="Discord">
                     <i class="fab fa-discord"></i>
                     <ssname>Discord</ssname>
                 </a>
-                <a href="https://www.credly.com/users/Celiakamana" target="_blank" aria-label="Credly">
+                <a href="https://www.credly.com/users/celia-kamana" target="_blank" aria-label="Credly">
                     <i class="fas fa-certificate"></i>
                     <ssname>Credly</ssname>
                 </a>
-                <a href="https://www.instagram.com/<your-username>" target="_blank" aria-label="Instagram">
+                <a href="https://www.instagram.com/celia.ki" target="_blank" aria-label="Instagram">
                     <i class="fab fa-instagram"></i>
                     <ssname>Instagram</ssname>
                 </a>
